@@ -1,6 +1,8 @@
 # social-network-analyzer
 This project is a Social Network Analyzer built using HTML, CSS, JavaScript, and Vis.js for visualizing social networks. It allows users to create and visualize a social network, find the shortest connection path between two users, suggest mutual friends, and detect clusters (communities) of connected users. The project also provides interactive features such as adding and removing connections and rendering the network dynamically.
 
+here is the website link:
+
 Features
 1. Add Connections
 Users can add connections (friendships) between two people.
@@ -19,6 +21,7 @@ Users can also remove a connection between two people, which updates the visual 
 The network of users is visually represented using Vis.js, where each user is a node, and connections between them are edges.
 The network is updated every time a connection is added or removed.
 How It Works
+
 Add Connections:
 Users enter two names (users) and click the "Add Connection" button to connect them. This will update the internal graph (adjacency list) and render the updated network.
 
@@ -34,7 +37,8 @@ Clicking "Detect Clusters" analyzes the network for distinct groups of connected
 Visual Network:
 The network of users and their connections is displayed visually using Vis.js. Nodes represent users, and edges represent connections (friendships).
 
-Technologies Used
+Technologies:
+
 HTML: To build the user interface.
 CSS: For basic styling.
 JavaScript: For graph algorithms, event handling, and DOM manipulation.
