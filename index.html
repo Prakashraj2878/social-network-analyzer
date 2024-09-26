@@ -4,33 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Network Analyzer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script> 
 </head>
 <body>
     <div class="container">
         <h1>Social Network Analyzer</h1>
-        <div class="form-group">
-            <label for="user1"><b>User 1:</b></label>
-            <input type="text" id="user1" placeholder="Enter User 1">
-        </div>
-        <div class="form-group">
-            <label for="user2"><b>User 2:</b></label>
-            <input type="text" id="user2" placeholder="Enter User 2">
-        </div>
-        <button id="addConnectionBtn">Add Connection</button>
-        <button id="removeConnectionBtn">Remove Connection</button>
-        <button id="findPathBtn">Find Shortest Path</button>
-        <button id="detectClustersBtn">Detect Clusters</button>
-        <button id="suggestFriendsBtn">Suggest Friends</button>
-        <h3>Connections:</h3>
+        <form id="addConnectionForm">
+            <h2>Add Connection</h2>
+            <label for="user1">User 1:</label>
+            <input type="text" id="user1" placeholder="Enter first user" required>
+            <br>
+            <label for="user2">User 2:</label>
+            <input type="text" id="user2" placeholder="Enter second user" required>
+            <br>
+            <button type="button" id="addConnectionBtn">Add Connection</button>
+        </form>
+        <form id="findPathForm">
+            <h2>Find Shortest Path</h2>
+            <label for="user1">User 1:</label>
+            <input type="text" id="user1" placeholder="Enter first user" required>
+            <br>
+            <label for="user2">User 2:</label>
+            <input type="text" id="user2" placeholder="Enter second user" required>
+            <br>
+            <button type="button" id="findPathBtn">Find Path</button>
+        </form>
+        <form id="suggestFriendsForm">
+            <h2>Suggest Friends</h2>
+            <label for="user1">User:</label>
+            <input type="text" id="user1" placeholder="Enter user to suggest friends" required>
+            <br>
+            <button type="button" id="suggestFriendsBtn">Suggest Friends</button>
+        </form>
+        <form id="removeConnectionForm">
+            <h2>Remove Connection</h2>
+            <label for="user1">User 1:</label>
+            <input type="text" id="user1" placeholder="Enter first user" required>
+            <br>
+            <label for="user2">User 2:</label>
+            <input type="text" id="user2" placeholder="Enter second user" required>
+            <br>
+            <button type="button" id="removeConnectionBtn">Remove Connection</button>
+        </form>
+        <h2>Detect Clusters</h2>
+        <button type="button" id="detectClustersBtn">Detect Clusters</button>
+        <h2>Connections</h2>
         <pre id="connections"></pre>
-        
-        <h3>Output:</h3>
-        <pre id="output"></pre>
+        <h2>Output</h2>
+        <div id="output"></div>
+        <h2>Network Visualization</h2>
         <div id="network"></div>
     </div>
-    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
