@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Social Network Analyzer</h1>
+        <div class="form-group">
+            <label for="user1"><b>User 1:</b></label>
+            <input type="text" id="user1" placeholder="Enter User 1">
+        </div>
+        <div class="form-group">
+            <label for="user2"><b>User 2:</b></label>
+            <input type="text" id="user2" placeholder="Enter User 2">
+        </div>
+        <button id="addConnectionBtn">Add Connection</button>
+        <button id="removeConnectionBtn">Remove Connection</button>
+        <button id="findPathBtn">Find Shortest Path</button>
+        <button id="detectClustersBtn">Detect Clusters</button>
+        <button id="suggestFriendsBtn">Suggest Friends</button>
+        <h3>Connections:</h3>
+        <pre id="connections"></pre>
+        
+        <h3>Output:</h3>
+        <pre id="output"></pre>
+        <div id="network"></div>
+    </div>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
