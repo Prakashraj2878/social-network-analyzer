@@ -1,6 +1,4 @@
 const graph = {};
-
-// Function to add a connection between two users
 function addConnection(user1, user2) {
     if (!graph[user1]) graph[user1] = [];
     if (!graph[user2]) graph[user2] = [];
@@ -8,27 +6,20 @@ function addConnection(user1, user2) {
     graph[user2].push(user1);
     displayConnections();
 }
-
-// Function to display current connections
 function displayConnections() {
     const connectionsElement = document.getElementById('connections');
     connectionsElement.textContent = JSON.stringify(graph, null, 2);
 }
-
-// BFS Algorithm to find the shortest path between two users
 function findShortestPath(user1, user2) {
     const queue = [[user1]];
     const visited = new Set();
     visited.add(user1);
-
     while (queue.length > 0) {
         const path = queue.shift();
         const node = path[path.length - 1];
-
         if (node === user2) {
             return path;
         }
-
         if (graph[node]) {
             for (const neighbor of graph[node]) {
                 if (!visited.has(neighbor)) {
@@ -41,12 +32,9 @@ function findShortestPath(user1, user2) {
     }
     return null;
 }
-
-// DFS Algorithm to suggest friends (mutual connections)
 function suggestFriends(user) {
     const friends = new Set(graph[user] || []);
     const mutuals = new Set();
-
     for (const friend of friends) {
         for (const friendOfFriend of graph[friend]) {
             if (friendOfFriend !== user && !friends.has(friendOfFriend)) {
@@ -54,11 +42,8 @@ function suggestFriends(user) {
             }
         }
     }
-
     return Array.from(mutuals);
 }
-
-// Event listeners for buttons
 document.getElementById('addConnectionBtn').addEventListener('click', () => {
     const user1 = document.getElementById('user1').value.trim();
     const user2 = document.getElementById('user2').value.trim();
@@ -91,8 +76,6 @@ document.getElementById('suggestFriendsBtn').addEventListener('click', () => {
         outputElement.textContent = `Friend Suggestions: ${suggestions.length > 0 ? suggestions.join(', ') : 'No suggestions available.'}`;
     }
 });
-
-// Function to detect clusters using DFS (Connected Components)
 function detectClusters() {
     const visited = new Set();
     const clusters = [];
@@ -106,8 +89,6 @@ function detectClusters() {
     }
     return clusters;
 }
-
-// Helper DFS function to traverse and collect connected nodes
 function dfs(user, visited, cluster) {
     visited.add(user);
     cluster.push(user);
@@ -120,14 +101,12 @@ function dfs(user, visited, cluster) {
         }
     }
 }
-// Event listener for cluster detection
 document.getElementById('detectClustersBtn').addEventListener('click', () => {
     const clusters = detectClusters();
     const outputElement = document.getElementById('output');
     outputElement.textContent = `Clusters Detected:\n${clusters.map((cluster, index) => `Cluster ${index + 1}: ${cluster.join(', ')}`).join('\n')}`;
 });
 
-// Function to render the network using Vis.js
 function renderNetwork() {
     const nodes = [];
     const edges = [];
@@ -169,13 +148,9 @@ function renderNetwork() {
 
     const network = new vis.Network(container, data, options);
 }
-
-// Event listener to render the network when new connections are added
 document.getElementById('addConnectionBtn').addEventListener('click', () => {
     renderNetwork();
 });
-
-// Function to remove a connection between two users
 function removeConnection(user1, user2) {
     if (graph[user1] && graph[user2]) {
         // Remove user2 from user1's friend list
@@ -189,14 +164,12 @@ function removeConnection(user1, user2) {
         alert("One or both users do not exist.");
     }
 }
-
-// Event listener for removing connections
 document.getElementById('removeConnectionBtn').addEventListener('click', () => {
     const user1 = document.getElementById('user1').value.trim();
     const user2 = document.getElementById('user2').value.trim();
     
     if (user1 && user2 && user1 !== user2) {
         removeConnection(user1, user2);
-        renderNetwork(); // Re-render the network visualization after removal
+        renderNetwork(); // 
     }
 });
