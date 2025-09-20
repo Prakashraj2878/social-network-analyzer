@@ -111,7 +111,7 @@ function renderNetwork() {
     const nodes = [];
     const edges = [];
 
-    // Create nodes for each user
+   
     for (const user in graph) {
         nodes.push({ id: user, label: user });
         graph[user].forEach(friend => {
@@ -153,10 +153,10 @@ document.getElementById('addConnectionBtn').addEventListener('click', () => {
 });
 function removeConnection(user1, user2) {
     if (graph[user1] && graph[user2]) {
-        // Remove user2 from user1's friend list
+        
         graph[user1] = graph[user1].filter(friend => friend !== user2);
         
-        // Remove user1 from user2's friend list
+       
         graph[user2] = graph[user2].filter(friend => friend !== user1);
         
         displayConnections();
@@ -173,3 +173,4 @@ document.getElementById('removeConnectionBtn').addEventListener('click', () => {
         renderNetwork(); // 
     }
 });
+
